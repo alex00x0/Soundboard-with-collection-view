@@ -14,6 +14,10 @@
 		C942C816225159EB0017BDFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C942C814225159EB0017BDFB /* LaunchScreen.storyboard */; };
 		C942C81E22515B430017BDFB /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942C81D22515B430017BDFB /* CollectionViewCell.swift */; };
 		C942C82022515E130017BDFB /* Sounds.swift in Sources */ = {isa = PBXBuildFile; fileRef = C942C81F22515E130017BDFB /* Sounds.swift */; };
+		C942C82C22521FF80017BDFB /* A.aifc in Resources */ = {isa = PBXBuildFile; fileRef = C942C82422515E530017BDFB /* A.aifc */; };
+		C942C82D22521FFB0017BDFB /* B.aifc in Resources */ = {isa = PBXBuildFile; fileRef = C942C82522515E530017BDFB /* B.aifc */; };
+		C942C82E22521FFD0017BDFB /* C.aifc in Resources */ = {isa = PBXBuildFile; fileRef = C942C82322515E530017BDFB /* C.aifc */; };
+		C942C82F22521FFF0017BDFB /* D.aifc in Resources */ = {isa = PBXBuildFile; fileRef = C942C82822515E7A0017BDFB /* D.aifc */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,8 +148,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C942C82D22521FFB0017BDFB /* B.aifc in Resources */,
+				C942C82F22521FFF0017BDFB /* D.aifc in Resources */,
+				C942C82C22521FF80017BDFB /* A.aifc in Resources */,
 				C942C816225159EB0017BDFB /* LaunchScreen.storyboard in Resources */,
 				C942C813225159EB0017BDFB /* Assets.xcassets in Resources */,
+				C942C82E22521FFD0017BDFB /* C.aifc in Resources */,
 				C942C811225159EA0017BDFB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

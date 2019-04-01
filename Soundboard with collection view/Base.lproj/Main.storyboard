@@ -35,6 +35,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qmO-C7-GDj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="164" height="147"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="playSound:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MxA-Hx-OyN"/>
+                                                    </connections>
+                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yng-aC-qHl">
                                                     <rect key="frame" x="61" y="63" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -48,6 +55,7 @@
                                             <constraint firstItem="yng-aC-qHl" firstAttribute="centerY" secondItem="pcy-Ix-5I8" secondAttribute="centerY" id="Qfl-SA-rbt"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="buttonOutlet" destination="qmO-C7-GDj" id="D2p-l0-A4E"/>
                                             <outlet property="cellLabel" destination="yng-aC-qHl" id="6ZM-HB-fXB"/>
                                         </connections>
                                     </collectionViewCell>
