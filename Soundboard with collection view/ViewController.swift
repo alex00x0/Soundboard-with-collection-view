@@ -14,23 +14,28 @@ class ViewController: UIViewController {
     
     var audioPlayer:AVAudioPlayer?
     
-    lazy var sounds : [Sounds] =
-//        [Sounds(statement: "A"), Sounds(statement: "B"), Sounds(statement: "C"), Sounds(statement: "D")]
-                            [Sounds(statement: "A", file: Bundle.main.url(forResource: "A", withExtension: "aifc")),
-                            Sounds(statement: "B", file: Bundle.main.url(forResource: "B", withExtension: "aifc")),
-                            Sounds(statement: "C", file: Bundle.main.url(forResource: "C", withExtension: "aifc")),
-                            Sounds(statement: "D", file: Bundle.main.url(forResource: "D", withExtension: "aifc"))]
+    lazy var sounds : [Sounds] = [
+        Sounds(statement: "A", fileName: "A"),
+        Sounds(statement: "B", fileName: "B"),
+        Sounds(statement: "C", fileName: "C"),
+        Sounds(statement: "D", fileName: "D")
+    ]
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBAction func playSound(_ sender: Any) {
-        let urlA = Bundle.main.url(forResource: "A", withExtension: "aifc")
+        let index = 0 // getting the _real_ number is the issue, perhaps
+        let title = sounds[index].statement
+        let musicFile = Bundle.main.url(forResource: title, withExtension: "aifc")
         
-        guard urlA != nil else {
+        
+//        let urlA = Bundle.main.url(forResource: "A", withExtension: "aifc")
+        
+        guard musicFile != nil else {
             return
         }
 
         do{
-            audioPlayer = try AVAudioPlayer(contentsOf: urlA!)
+            audioPlayer = try AVAudioPlayer(contentsOf: musicFile!)
             audioPlayer?.play()
             print("audio is playing")
         } catch {

@@ -10,5 +10,8 @@ import Foundation
 
 struct Sounds{
     var statement : String
-    var file : URL?
+    var fileName : String
+    var filePath : URL? {
+        return Bundle.main.url(forResource: fileName, withExtension: "aifc")
+    }
 }
