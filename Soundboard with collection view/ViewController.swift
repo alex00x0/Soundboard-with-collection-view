@@ -6,54 +6,28 @@
 //  Copyright © 2019 AlexanderNiehaus. All rights reserved.
 //
 
+struct Sounds{
+    var statement : String
+    var file : String
+}
+
+
 import UIKit
 import AVFoundation
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
-    var audioPlayer:AVAudioPlayer?
+    var avPlayer:AVAudioPlayer!
     
     lazy var sounds : [Sounds] = [
-        Sounds(statement: "A", fileName: "A"),
-        Sounds(statement: "B", fileName: "B"),
-        Sounds(statement: "C", fileName: "C"),
-        Sounds(statement: "D", fileName: "D")
+        Sounds(statement: "A", file: "A"),
+        Sounds(statement: "B", file: "B"),
+        Sounds(statement: "C", file: "C"),
+        Sounds(statement: "D", file: "D")
     ]
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBAction func playSound(_ sender: Any) {
-        let index = 0 // getting the _real_ number is the issue, perhaps
-        let title = sounds[index].statement
-        let musicFile = Bundle.main.url(forResource: title, withExtension: "aifc")
-        
-        
-//        let urlA = Bundle.main.url(forResource: "A", withExtension: "aifc")
-        
-        guard musicFile != nil else {
-            return
-        }
-
-        do{
-            audioPlayer = try AVAudioPlayer(contentsOf: musicFile!)
-            audioPlayer?.play()
-            print("audio is playing")
-        } catch {
-            print("error")
-        }
-        
-        //1
-//        let buttonPosition: CGPoint = sender.location(in: self.collectionView)
-//        guard let indexPath = self.collectionView?.indexPathForItem(at: buttonPosition) else { return }
-//
-//        print ("doubleTap on cell at: ", indexPath)
-        
-        
-        //2
-        //let cell = self.collectionView.cellForItem(at: indexPath)
-        // now you have the cell and have access to the button
-
-        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,21 +36,11 @@ class ViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: width)
         
         }
-    
-    let sender : Any? = nil
-}
-
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return sounds.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        func cellTapped(selectedIndex: IndexPath) {
-//            let cellSelected = Int(selectedIndex)
-//            print("Selected cell named: \(sounds[selectedIndex].statement)")
-//        }
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "soundCell", for: indexPath) as! CollectionViewCell
         let Soundz = sounds[indexPath.item]
         cell.cellLabel.text = Soundz.statement
@@ -84,5 +48,26 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let fileName = sounds[(indexPath as NSIndexPath).item].file
+        let audioPlayer: AVAudioPlayer?
+        let url = URL(
+            fileURLWithPath: Bundle.main.path(
+                forResource: fileName,
+                ofType: "aifc")!)
+        
+        do {
+            
+            try audioPlayer = AVAudioPlayer(contentsOf: url)
+            if let sound = audioPlayer {
+                avPlayer = sound
+                avPlayer.prepareToPlay()
+                avPlayer.play()
+            }
+        } catch {
+            print ("Could not create audio player.")
+        }
+        
+    }
 }
 
